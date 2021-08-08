@@ -6,10 +6,21 @@ spring:
     password: root
     url: jdbc:mysql://192.168.56.10:3306/gulimall_pms?useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  application:
+    name: mall-product
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       #主键自增
       id-type: auto
+      #配置全局逻辑删除的规则，加上逻辑删除注解@TableLogic
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+logging:
+  level:
+    com.duwanga.mall: debug

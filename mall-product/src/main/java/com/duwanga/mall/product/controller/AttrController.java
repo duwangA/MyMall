@@ -3,12 +3,9 @@ package com.duwanga.mall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.duwanga.mall.product.vo.AttrVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.duwanga.mall.product.entity.AttrEntity;
 import com.duwanga.mall.product.service.AttrService;
@@ -30,6 +27,15 @@ public class AttrController {
     @Autowired
     private AttrService attrService;
 
+    /**
+     * 列表
+     */
+    @GetMapping("/base/list/{catelogId}")
+    public R BaseList(@RequestParam Map<String, Object> params,@PathVariable("catelogId") Long catelogId){
+        PageUtils page = attrService.queryBaseAttrPage(params,catelogId);
+
+        return R.ok().put("page", page);
+    }
     /**
      * 列表
      */
@@ -55,8 +61,8 @@ public class AttrController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody AttrEntity attr){
-		attrService.save(attr);
+    public R save(@RequestBody AttrVo attr){
+		attrService.saveAttr(attr);
 
         return R.ok();
     }

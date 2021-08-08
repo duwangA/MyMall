@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 620275c1-91c2-4d0b-9f95-1ae3dfd2330a
+        ext-config[0]:
+          data-id: gateway.yaml
+          group: DEV
+          refresh: true

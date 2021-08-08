@@ -3,12 +3,9 @@ package com.duwanga.mall.member.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.duwanga.mall.member.feign.CouponFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.duwanga.mall.member.entity.MemberEntity;
 import com.duwanga.mall.member.service.MemberService;
@@ -30,6 +27,17 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
+    @Autowired
+    CouponFeignService couponFeignService;
+    @GetMapping("/consumer/coupon")
+    public R test(){
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setCity("GUANGDONG");
+        memberEntity.setNickname("吴彦祖");
+        R membercoupons = couponFeignService.membercoupons();
+        Object o = membercoupons.get("coupons");
+        return R.ok().put("member",memberEntity).put("coupons",o);
+    }
     /**
      * 列表
      */

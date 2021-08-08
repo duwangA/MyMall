@@ -1,15 +1,21 @@
-server:
-  port: 7000
-spring:
-  datasource:
-    username: root
-    password: root
-    url: jdbc:mysql://192.168.56.10:3306/gulimall_sms?useSSL=false&serverTimezone=UTC
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#server:
+#  port: 7000
+#spring:
+#  datasource:
+#    username: root
+#    password: root
+#    url: jdbc:mysql://192.168.56.10:3306/gulimall_sms?useSSL=false&serverTimezone=UTC
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#  profiles:
+#    active: dev
+#mybatis-plus:
+#  mapper-locations: classpath:/mapper/**/*.xml
+#  global-config:
+#    db-config:
+#      #主键自增
+#      id-type: auto
 
-mybatis-plus:
-  mapper-locations: classpath:/mapper/**/*.xml
-  global-config:
-    db-config:
-      #主键自增
-      id-type: auto
